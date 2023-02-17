@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Home from './Components/Home';
-import LivePeerTest from './Components/LivePeerTest';
+import Home from './Components/Home/Index';
 
 function App() {
   return (

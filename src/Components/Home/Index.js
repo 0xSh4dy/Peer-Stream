@@ -1,4 +1,4 @@
-import Modes from "./Modes/Index"
+import Modes from "../Modes/Index"
 export default function Home(){
     return <div>
         <Modes/>
