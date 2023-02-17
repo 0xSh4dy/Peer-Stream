@@ -5,11 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "react-ui";
 import { tokens, components } from "react-ui/themes/dark";
+import Sidebar from "./Components/Sidebar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider tokens={tokens} components={components}>
+      <Sidebar />
       <App />
     </ThemeProvider>{" "}
   </React.StrictMode>

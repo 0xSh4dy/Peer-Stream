@@ -15,13 +15,16 @@ import HistoryIcon from '@mui/icons-material/History';
 import LocalFireDepartmentSharpIcon from '@mui/icons-material/LocalFireDepartmentSharp';
 
 export default function Sidebar(){
-    const [enable_sidebar,Set_enable_sidebar] = React.useState(false);
+    const [enableSidebar,setEnableSidebar] = React.useState(false);
     return(
         <div>
-            <Button onClick={()=>{Set_enable_sidebar(true)}}>Toggle</Button>
-
-            <Drawer anchor='left' open={enable_sidebar} onClose={()=>{Set_enable_sidebar(false)}}>
-                <Box sx={{width:250}}>
+            <Button onClick={()=>{setEnableSidebar(true)}}>Toggle</Button>
+            <Drawer anchor='left' open={enableSidebar} onClose={()=>{setEnableSidebar(false)}} PaperProps={{
+                sx: {
+                    backgroundColor: "#202833",
+                    color: "#1976d2",
+                }}} >
+                <Box sx={{width:250}} >
                     <List >
                         <ListItem disablePadding  >
                             <ListItemButton>
