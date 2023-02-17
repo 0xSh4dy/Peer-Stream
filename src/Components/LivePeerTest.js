@@ -17,8 +17,8 @@ export default function LivePeerTest() {
   return (
     <div>
       <LivepeerConfig client={reactClient}>
-        {/* <CreateAndViewAsset/> */}
-        <NewStream/>
+        <CreateAndViewAsset/>
+        {/* <NewStream/> */}
       </LivepeerConfig>
     </div>
   );
