@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logo from "./logo.svg";
 import "./App.css";
 import Home from "./Components/Home/Index";
@@ -10,6 +11,18 @@ function App() {
         <Route path="/home" element={<Home/>}/>
       </Routes>
     </BrowserRouter>
+=======
+import './App.css';
+import LivePeerTest from './Components/LivePeerTest';
+import Login from './Components/Login';
+
+function App() {
+  return (
+    <div>
+      <Login />
+      {/* <LivePeerTest /> */}
+    </div>
+>>>>>>> 52ef9fa (Add Login Essentials)
   );
 }
 
