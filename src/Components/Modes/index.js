@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { TextField, Modal, Button } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import {
   DriveFolderUpload,
   OndemandVideo,
@@ -9,24 +9,15 @@ import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const text =
-  "Choose your preferred mode of expression and get started. Upload a recorded video or go live streaming with just a tap.";
+  "Upload a recorded video or go live streaming with just a tap.";
 
 export default function Modes() {
-  const [modalOpen, setModalOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const inputFile = useRef(null);
-  function InnerModalBox() {
-    return (
-      <div className="flex flex-col w-screen h-screen justify-center items-center gap-y-5">
-        <TextField label="Title" variant="standard"></TextField>
-        <TextField label="Description" variant="standard"></TextField>
-      </div>
-    );
-  }
+
 
   function ModeComponent() {
     return (
@@ -35,7 +26,7 @@ export default function Modes() {
           className="modeBoxText w-1/4 text-center text-[white]"
           style={{
             fontFamily: "Roboto",
-            fontSize: "20px",
+            fontSize: "18px",
             fontWeight: 400,
             lineHeight: "23.44px",
           }}
@@ -56,7 +47,7 @@ export default function Modes() {
           </Button>
         </div>
         <div>
-          <img src="vectors/image.png" alt="Image not found" />
+          <img src="vectors/image.png" alt="" />
         </div>
         <div>
           <Button
@@ -101,13 +92,13 @@ export default function Modes() {
               label="Description"
               fullWidth
               variant="standard"
-              sx={{mt:3}}
+              sx={{ mt: 3 }}
             />
             <Button
-              sx={{ borderRadius: 1, mt:3 }}
+              sx={{ borderRadius: 1, mt: 3 }}
               variant="contained"
               startIcon={<DriveFolderUpload />}
-              onClick={()=>{inputFile.current.click()}}
+              onClick={() => { inputFile.current.click() }}
             >
               Browse File
               <input
@@ -115,7 +106,7 @@ export default function Modes() {
                 id="file"
                 ref={inputFile}
                 style={{ display: "none" }}
-                onChange={(e) => {}}
+                onChange={(e) => { }}
               />
             </Button>
           </DialogContent>
