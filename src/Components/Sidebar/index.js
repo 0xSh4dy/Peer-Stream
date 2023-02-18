@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -16,18 +17,15 @@ import LocalFireDepartmentSharpIcon from '@mui/icons-material/LocalFireDepartmen
 
 export default function Sidebar(){
     const [enableSidebar,setEnableSidebar] = React.useState(false);
+    let location = useLocation();
     return(
         <div>
             <Button onClick={()=>{setEnableSidebar(true)}}>Toggle</Button>
-            <Drawer anchor='left' open={enableSidebar} onClose={()=>{setEnableSidebar(false)}} PaperProps={{
-                sx: {
-                    backgroundColor: "#202833",
-                    color: "#1976d2",
-                }}} >
+            <Drawer anchor='left' open={enableSidebar} onClose={()=>{setEnableSidebar(false)}} >
                 <Box sx={{width:250}} >
                     <List >
                         <ListItem disablePadding  >
-                            <ListItemButton>
+                            <ListItemButton onClick={()=>{window.location.href='/home'}} selected={location.pathname==='/home'}>
                             <ListItemIcon>
                                 <HomeIcon />
                             </ListItemIcon>
@@ -35,7 +33,7 @@ export default function Sidebar(){
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton>
+                            <ListItemButton onClick={()=>{window.location.href='/trending'}} selected={location.pathname==='/trending'}>
                             <ListItemIcon>
                                 <LocalFireDepartmentSharpIcon />
                             </ListItemIcon>
@@ -44,7 +42,7 @@ export default function Sidebar(){
                         </ListItem>
                         <Divider />
                         <ListItem disablePadding >
-                            <ListItemButton>
+                            <ListItemButton onClick={()=>{window.location.href='/library'}} selected={location.pathname==='/library'}>
                             <ListItemIcon>
                                 <VideoLibraryIcon />
                             </ListItemIcon>
@@ -52,7 +50,7 @@ export default function Sidebar(){
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton>
+                            <ListItemButton onClick={()=>{window.location.href='/history'}} selected={location.pathname==='/history'}>
                             <ListItemIcon>
                                 <HistoryIcon />
                             </ListItemIcon>
@@ -61,7 +59,7 @@ export default function Sidebar(){
                         </ListItem>
                         <Divider/>
                         <ListItem disablePadding >
-                            <ListItemButton>
+                            <ListItemButton onClick={()=>{window.location.href='/settings'}} selected={location.pathname==='/settings'}>
                             <ListItemIcon>
                                 <SettingsIcon/>
                             </ListItemIcon>
