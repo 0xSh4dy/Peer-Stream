@@ -1,34 +1,34 @@
-import SearchIcon from "@mui/icons-material/Search";
-import { Button, Avatar, IconButton, Box } from "@mui/material";
+import { Avatar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import peerStream from "../../assets/peerStream.svg";
+
 const Header = ({ enableSidebar, setEnableSidebar }) => {
   return (
     <div className="z-10 fixed w-screen top-0 bg-[#121212] py-1 px-8  flex items-center justify-between border-b border-b-[1px] ">
 
       <div className="flex items-center justify-center">
 
-      <IconButton
-        onClick={() => {
-          setEnableSidebar(!enableSidebar);
-        }}
-        sx={{ color: "white" }}
-        aria-label="notifs"
+        <IconButton
+          onClick={() => {
+            setEnableSidebar(!enableSidebar);
+          }}
+          sx={{ color: "white" }}
+          aria-label="notifs"
         >
-        <MenuIcon />
-      </IconButton>
-      <Box
-        component="img"
-        sx={{
-          height: 20,
-          marginLeft: 2
-        }}
-        alt="PeerStream"
-        src={peerStream}
+          <MenuIcon />
+        </IconButton>
+        <Box
+          component="img"
+          sx={{
+            height: 20,
+            marginLeft: 2
+          }}
+          alt="PeerStream"
+          src={peerStream}
         />
       </div>
-      
+
       <div className="">
         <div className="border rounded overflow-hidden flex ">
           <input

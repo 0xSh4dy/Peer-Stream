@@ -21,8 +21,7 @@ export default function Layout({ children }) {
         <Sidebar enableSidebar={enableSidebar} setEnableSidebar={setEnableSidebar}>
 
         </Sidebar>
-        {/* <Button onClick={()=>{}}>Toggle</Button>
-         */}
+
       </ThemeProvider>{" "}
     </div>
   );

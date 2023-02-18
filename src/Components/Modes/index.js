@@ -55,8 +55,11 @@ export default function Modes() {
         </div>
         <div>
           <Button
-            style={{ backgroundColor: "#EB4335" }}
-            sx={{ borderRadius: 1 }}
+            sx={{
+              backgroundColor: "#EB4335", borderRadius: 1, ':hover': {
+                bgcolor: 'pink',
+              }
+            }}
             variant="contained"
             startIcon={<OndemandVideo />}
           >
