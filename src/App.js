@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./Components/Home/Index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sidebar from "./Components/Sidebar";
+import Sidebar from "./Components/Sidebar/Index";
 import LivePeerTest from "./Components/LivePeerTest";
 import Layout from "./Components/Layout/Index";
 import Renderer from "./Components/Renderer/Index";
