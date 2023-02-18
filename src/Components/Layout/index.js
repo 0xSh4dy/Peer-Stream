@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Header from "../Header/index";
-import Sidebar from "../Sidebar/index";
+import Sidebar from "../SideBar/index";
 
 const darkTheme = createTheme({
   palette: {

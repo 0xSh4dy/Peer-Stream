@@ -30,7 +30,7 @@ export default function Modes() {
 
   function ModeComponent() {
     return (
-      <div className="modeBox bg-[#272727] w-screen h-screen flex flex-col justify-center items-center gap-y-5">
+      <div className="modeBox w-screen h-screen flex flex-col justify-center items-center gap-y-5">
         <p
           className="modeBoxText w-1/4 text-center text-[white]"
           style={{

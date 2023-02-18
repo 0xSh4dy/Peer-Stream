@@ -5,7 +5,7 @@ import LivePeerTest from "./Components/LivePeerTest";
 import Renderer from "./Components/Renderer/";
 import Login from "./Components/Login/";
 import Dashboard from "./Components/Dashboard/";
-import Sidebar from "./Components/Sidebar/";
+import SideBar from "./Components/SideBar/";
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/" element={<Sidebar />} />
+        <Route path="/" element={<SideBar />} />
         <Route path="/testing" element={<LivePeerTest />} />
         <Route path="/layoutTest" element={<Renderer />} />
       </Routes>

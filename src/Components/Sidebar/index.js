@@ -20,7 +20,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
     return (
         <div>
             <Drawer anchor='left' open={enableSidebar} onClose={() => { setEnableSidebar(false) }} >
-                <Box sx={{ width: 250 }} >
+                <Box className="" sx={{ width: 250 }} >
                     <List >
                         <ListItem disablePadding  >
                             <ListItemButton onClick={() => { window.location.href = '/home' }} selected={location.pathname === '/home'}>
