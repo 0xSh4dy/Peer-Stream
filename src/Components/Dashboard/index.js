@@ -1,19 +1,12 @@
-import Header from "../Header"
-import SideBar from "../SideBar"
-import VideoCard from "../VideoCard"
-import React, { useState } from "react";
-
-
+import VideoCard from '../VideoCard';
+import Layout from '../Layout';
 
 const Dashboard = () => {
-    const [enableSidebar, setEnableSidebar] = useState(false);
     return (
-        <>
-            <Header enableSidebar={enableSidebar} setEnableSidebar={setEnableSidebar}/>
-            <SideBar enableSidebar={enableSidebar} setEnableSidebar={setEnableSidebar}/>
-            <div class="container px-32">
-                <div class="flex flex-wrap mt-12 space-y-20 space-x-5">
-                    <div className="hidden"></div>
+        <Layout>
+            <div class='container px-32 bg-[#272727]'>
+                <div class='flex flex-wrap mt-12 space-y-20 space-x-5'>
+                    <div className='hidden'></div>
                     <VideoCard />
                     <VideoCard />
                     <VideoCard />
@@ -27,9 +20,8 @@ const Dashboard = () => {
                     <VideoCard />
                 </div>
             </div>
-            {/* </section> */}
-        </>
-    )
-}
+        </Layout>
+    );
+};
 
-export default Dashboard
+export default Dashboard;

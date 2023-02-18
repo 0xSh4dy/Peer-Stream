@@ -1,34 +1,33 @@
-import SearchIcon from "@mui/icons-material/Search";
-import { Button, Avatar, IconButton, Box } from "@mui/material";
+import { Avatar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import peerStream from "../../assets/peerStream.svg";
+
 const Header = ({ enableSidebar, setEnableSidebar }) => {
   return (
-    <div className="z-10 fixed w-screen top-0 bg-[#121212] py-1 px-8  flex items-center justify-between border-b border-b-[1px] ">
+    <div className="flex items-center justify-center">
+      <div className="z-10 fixed w-screen top-0 py-1 px-8 bg-bg/75 flex items-center justify-between border-b border-b-[1px] bg-[#272727]">
 
-      <div className="flex items-center justify-center">
-
-      <IconButton
-        onClick={() => {
-          setEnableSidebar(!enableSidebar);
-        }}
-        sx={{ color: "white" }}
-        aria-label="notifs"
+        <IconButton
+          onClick={() => {
+            setEnableSidebar(!enableSidebar);
+          }}
+          sx={{ color: "white" }}
+          aria-label="notifs"
         >
-        <MenuIcon />
-      </IconButton>
-      <Box
-        component="img"
-        sx={{
-          height: 20,
-          marginLeft: 2
-        }}
-        alt="PeerStream"
-        src={peerStream}
+          <MenuIcon />
+        </IconButton>
+        <Box
+          component="img"
+          sx={{
+            height: 20,
+            marginLeft: 2
+          }}
+          alt="PeerStream"
+          src={peerStream}
         />
       </div>
-      
+
       <div className="">
         <div className="border rounded overflow-hidden flex ">
           <input
@@ -38,7 +37,7 @@ const Header = ({ enableSidebar, setEnableSidebar }) => {
           />
           <button class="flex items-center justify-center px-4 border-l ">
             <svg
-              class="h-4 w-4 text-grey-dark"
+              class="h-4 w-4 text-white"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
