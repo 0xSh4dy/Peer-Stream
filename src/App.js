@@ -5,6 +5,7 @@ import Sidebar from "./Components/Sidebar/Index";
 import LivePeerTest from "./Components/LivePeerTest";
 import Layout from "./Components/Layout/Index";
 import Renderer from "./Components/Renderer/Index";
+import LiveStream from "./Components/Livestream";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Sidebar/>}/>
         <Route path="/testing" element={<LivePeerTest/>}/>
         <Route path="/layoutTest" element= {<Renderer/>}/>
+        <Route  path="/live" element={<LiveStream/>} />
       </Routes>
     </BrowserRouter>
   );
