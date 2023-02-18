@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createTheme} from "@mui/material/styles";
-import Sidebar from "./Components/Sidebar";
+import Sidebar from "./Components/Sidebar/Index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const darkTheme = createTheme({
@@ -15,7 +15,6 @@ const darkTheme = createTheme({
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
-      {/* <Sidebar /> */}
       <App />
     </ThemeProvider>{" "}
   </React.StrictMode>

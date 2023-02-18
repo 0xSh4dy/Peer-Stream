@@ -15,12 +15,11 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import HistoryIcon from '@mui/icons-material/History';
 import LocalFireDepartmentSharpIcon from '@mui/icons-material/LocalFireDepartmentSharp';
 
-export default function Sidebar(){
-    const [enableSidebar,setEnableSidebar] = React.useState(false);
+export default function Sidebar({enableSidebar,setEnableSidebar}){
     let location = useLocation();
+    console.log(enableSidebar)
     return(
         <div>
-            <Button onClick={()=>{setEnableSidebar(true)}}>Toggle</Button>
             <Drawer anchor='left' open={enableSidebar} onClose={()=>{setEnableSidebar(false)}} >
                 <Box sx={{width:250}} >
                     <List >
