@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, TextField } from "@mui/material";
 import { useState, useRef } from "react";
-import DialogContentText from "@mui/material/DialogContentText";
 import { DriveFolderUpload } from "@mui/icons-material";
-import {Typography} from "@mui/material";
+import { Typography } from "@mui/material";
 import {
   Player,
   LivepeerProvider,
@@ -25,20 +24,11 @@ function FileUploadForm(props) {
   } = useCreateAsset(
     video
       ? {
-          sources: [{ name: title.length>0?title:video.name, file: video }],
-        }
+        sources: [{ name: title.length > 0 ? title : video.name, file: video }],
+      }
       : null
   );
-    useEffect(() => {
-        if(props.approved === true && video !== null){
-            console.log(video);
-            // createAsset?.();
-            props.setApproved(false);
-        }
-        else if(video !== null){
-            props.closeDialog();
-        }
-    }, [props.approved]);
+
   return (
     <React.Fragment>
       <TextField
@@ -83,12 +73,12 @@ function FileUploadForm(props) {
           }}
         />
       </Button>
-        <Button variant="contained" sx={{ml:4,mt:3}} onClick={()=>{
-            createAsset?.();
-        }}>
-            Create Asset
-        </Button>
-      {video ? <Typography sx={{mt:1}} paragraph={true}> {video.name}</Typography> : <React.Fragment></React.Fragment>}
+      <Button variant="contained" sx={{ ml: 4, mt: 3 }} onClick={() => {
+        createAsset?.();
+      }}>
+        Create Asset
+      </Button>
+      {video ? <Typography sx={{ mt: 1 }} paragraph={true}> {video.name}</Typography> : <React.Fragment></React.Fragment>}
     </React.Fragment>
   );
 }

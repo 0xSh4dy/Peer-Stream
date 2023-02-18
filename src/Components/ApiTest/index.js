@@ -15,7 +15,7 @@ export default function ApiTest() {
       let headers = new Headers();
       headers.append("Content-Type", "application/json");
       headers.append("Accept", "application/json");
-      headers.append("Authorization",`Bearer ${process.env.REACT_APP_LIVEPEER_API_KEY}`);
+      headers.append("Authorization", `Bearer ${process.env.REACT_APP_LIVEPEER_API_KEY}`);
       fetch(apiUrl, {
         mode: "cors",
         method: "GET",
@@ -36,5 +36,6 @@ export default function ApiTest() {
         });
     });
   }, []);
+
   return <div></div>;
 }
