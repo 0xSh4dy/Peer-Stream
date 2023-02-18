@@ -1,9 +1,8 @@
-import Header from "../Header";
+import Header from "../Header/Index";
 import Modes from "../Modes/Index";
 
 export default function Home(){
     return <div>
-        <Header/>
         <Modes/>
     </div>
 }
