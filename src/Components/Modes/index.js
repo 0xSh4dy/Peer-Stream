@@ -1,7 +1,6 @@
-import { useState, useRef } from "react";
-import { TextField, Button } from "@mui/material";
+import { useState } from "react";
+import { Button } from "@mui/material";
 import {
-  DriveFolderUpload,
   OndemandVideo,
   CloudUpload,
 } from "@mui/icons-material";
@@ -10,13 +9,19 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import FileUploadForm from "../FileUploadForm";
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from "@livepeer/react";
 
 const text =
   "Upload a recorded video or go live streaming with just a tap.";
 
 export default function Modes() {
   const [open, setOpen] = useState(false);
-  const inputFile = useRef(null);
+  const [approved, setApproved] = useState(false);
 
 
   function ModeComponent() {
@@ -43,7 +48,6 @@ export default function Modes() {
             }}
           >
             Upload Video
-
           </Button>
         </div>
         <div>
@@ -71,50 +75,36 @@ export default function Modes() {
     setOpen(false);
   };
 
+  const reactClient = createReactClient({
+    provider: studioProvider({
+      apiKey: process.env.REACT_APP_LIVEPEER_API_KEY,
+    }),
+  });
+
+  function FormDialogButtons() {
+    return (
+      <React.Fragment>
+        <Button onClick={closeDialog}>Cancel</Button>
+        <Button onClick={() => {
+          setApproved(true)
+        }}>Done</Button>
+      </React.Fragment>
+    );
+  }
   function FormDialog() {
     return (
       <div>
-        <Dialog open={open} onClose={closeDialog}>
-          <DialogTitle>Peer Stream</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              type="text"
-              label="Title"
-              fullWidth
-              variant="standard"
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              type="text"
-              label="Description"
-              fullWidth
-              variant="standard"
-              sx={{ mt: 3 }}
-            />
-            <Button
-              sx={{ borderRadius: 1, mt: 3 }}
-              variant="contained"
-              startIcon={<DriveFolderUpload />}
-              onClick={() => { inputFile.current.click() }}
-            >
-              Browse File
-              <input
-                type="file"
-                id="file"
-                ref={inputFile}
-                style={{ display: "none" }}
-                onChange={(e) => { }}
-              />
-            </Button>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={closeDialog}>Cancel</Button>
-            <Button onClick={closeDialog}>Done</Button>
-          </DialogActions>
-        </Dialog>
+        <LivepeerConfig client={reactClient}>
+          <Dialog open={open} onClose={closeDialog}>
+            <DialogTitle>Peer Stream</DialogTitle>
+            <DialogContent>
+              <FileUploadForm approved={approved} setApproved={setApproved} closeDialog={closeDialog} />
+            </DialogContent>
+            <DialogActions>
+              <FormDialogButtons />
+            </DialogActions>
+          </Dialog>
+        </LivepeerConfig>
       </div>
     );
   }
