@@ -24,6 +24,7 @@ export default function CreateAndViewAsset() {
         }
       : null
   );
+  
   return (
     <div className="App">
       <h2>Hello, {provider.getConfig().name}</h2>
