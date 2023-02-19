@@ -22,6 +22,7 @@ function App() {
           <Route path="/live" element={<LiveStream />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/live" element={<LiveStream />} />
+          <Route path="/lpt" element={<LivePeerTest/>} />
         </Routes>
       </BrowserRouter>
     </AccountContext.Provider>
