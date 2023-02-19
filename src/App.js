@@ -6,6 +6,7 @@ import Dashboard from "./Components/Dashboard/";
 import SideBar from "./Components/SideBar/";
 import LiveStream from "./Components/Live";
 import { createContext, useState } from "react";
+import LiveStream from "./Components/Livestream";
 
 export const AccountContext = createContext();
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/live" element={<LiveStream />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/live" element={<LiveStream />} />
         </Routes>
       </BrowserRouter>
     </AccountContext.Provider>
