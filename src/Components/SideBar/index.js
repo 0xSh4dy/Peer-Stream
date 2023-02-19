@@ -50,7 +50,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                         </ListItem>
                         <Divider />
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { window.location.href = '/lpt' }} selected={location.pathname === '/library'}>
+                            <ListItemButton onClick={() => {navigate("/lpt") }} selected={location.pathname === '/#/lpt'}>
                                 <ListItemIcon>
                                     <LiveTvIcon />
                                 </ListItemIcon>
@@ -58,7 +58,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { window.location.href = '/history' }} selected={location.pathname === '/history'}>
+                            <ListItemButton onClick={() => { navigate("/history") }} selected={location.pathname === '/#/history'}>
                                 <ListItemIcon>
                                     <HistoryIcon />
                                 </ListItemIcon>
@@ -67,7 +67,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                         </ListItem>
                         <Divider />
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { window.location.href = '/settings' }} selected={location.pathname === '/settings'}>
+                            <ListItemButton onClick={() => { navigate("/settings") }} selected={location.pathname === '/#/settings'}>
                                 <ListItemIcon>
                                     <SettingsIcon />
                                 </ListItemIcon>
