@@ -1,10 +1,16 @@
 import React from "react";
-import { Box, Button, Input, Typography, Avatar, IconButton } from "@mui/material";
+import {
+  Box,
+  Button,
+  Input,
+  Typography,
+  Avatar,
+  IconButton,
+} from "@mui/material";
 import { Player, useCreateStream } from "@livepeer/react";
 import { useEffect } from "react";
 import { useMemo, useState, useCallback } from "react";
 import Layout from "../Layout";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CopyToClipboardButton from "../CopyToClipboardButton";
 
 export const NewStream = () => {
@@ -17,7 +23,7 @@ export const NewStream = () => {
     (e) => {
       if (out.isSuccess && streamName !== "") {
         let event = e || window.event;
-        console.log("entered");
+        // console.log("entered");
         event.preventDefault();
         let confirmationMsg = "Your Stream Settings may get lost";
         event.returnValue = confirmationMsg;
@@ -33,7 +39,7 @@ export const NewStream = () => {
     };
   }, [preventRefresh]);
 
-  console.log(out);
+  // console.log(out);
 
   const isLoading = useMemo(() => status === "loading", [status]);
   return (
@@ -85,6 +91,7 @@ export const NewStream = () => {
 
         {stream?.playbackId && (
           <React.Fragment>
+            {window.alert("Please copy the stream key to your OBS Studio")}
             <Player
               title={stream?.name}
               playbackId={stream?.playbackId}
@@ -107,13 +114,26 @@ export const NewStream = () => {
                   </p>
                 </div>
               </div>
-              <Button
-                className="h-10 w-30 pl-4 rounded-md right-0"
-                variant="contained"
-                sx={{backgroundColor:"#64748B"}}
-              >
-                Copy Stream Link <CopyToClipboardButton link={"https://lvpr.tv/?v="+out.data.playbackId}/>{" "}
-              </Button>
+              <div className="w-1/2 flex justify-between">
+                <Button
+                  className="h-10 w-30 pl-4 rounded-md px-4"
+                  variant="contained"
+                  sx={{ backgroundColor: "#64748B" }}
+                >
+                  Copy Stream Link{" "}
+                  <CopyToClipboardButton
+                    link={"https://lvpr.tv/?v=" + out.data.playbackId}
+                  />{" "}
+                </Button>
+                <Button
+                  className="h-10 w-30 pl-4 rounded-md right-0"
+                  variant="contained"
+                  sx={{ backgroundColor: "#64748B" }}
+                >
+                  Copy Stream Key{" "}
+                  <CopyToClipboardButton link={out.data.streamKey} />{" "}
+                </Button>
+              </div>
             </div>
           </React.Fragment>
         )}
