@@ -22,7 +22,6 @@ const Dashboard = () => {
                     <VideoCard />
                 </div>
             </div>
-            {/* </section> */}
         </Layout>
     )
 }
