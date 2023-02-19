@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Header from "../Header/index";
 import Sidebar from "../SideBar/index";
+import { CssBaseline } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { AccountContext } from "../../App";
 
@@ -32,6 +33,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
         <Header enableSidebar={enableSidebar} setEnableSidebar={setEnableSidebar}></Header>
 
         {children}
