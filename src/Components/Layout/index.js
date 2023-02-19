@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Header from "../Header/index";
 import Sidebar from "../SideBar/index";
+import { CssBaseline } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -15,6 +16,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
         <Header enableSidebar={enableSidebar} setEnableSidebar={setEnableSidebar}></Header>
 
         {children}

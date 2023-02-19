@@ -6,6 +6,7 @@ import Renderer from "./Components/Renderer/";
 import Login from "./Components/Login/";
 import Dashboard from "./Components/Dashboard/";
 import SideBar from "./Components/SideBar/";
+import LiveStream from "./Components/Live";
 
 
 function App() {
@@ -13,11 +14,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<SideBar />} />
         <Route path="/testing" element={<LivePeerTest />} />
-        <Route path="/layoutTest" element={<Renderer />} />
+        <Route path="/home" element={<Renderer />} />
+        <Route path="/live" element={<LiveStream />} />
       </Routes>
     </BrowserRouter>
   );
