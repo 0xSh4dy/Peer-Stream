@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+import shortenAddress from "../utils";
 
 const style = {
     position: 'absolute',
@@ -26,16 +27,16 @@ const VideoCard = (props) => {
     const link = props.videoData.location;
 
     return (
-        <div className="p-10 w-100 md:p-2 flex flex-col justify-items-center space-y-4">
-            <div className="relative">
+        <div className="p-10 w-100 md:p-2 flex flex-col justify-items-center space-y-4 ">
+            <div className="relative max-w-32">
                 <img className="h-48 w-full rounded-lg" src="https://www.kindacode.com/wp-content/uploads/2022/06/night-sky.jpeg" alt="" onClick={handleOpen} />
                 <h3 className="absolute bg-black rounded-lg text-xs text-white bottom-2 right-2 p-1"></h3>
             </div>
             <div className="flex flex-row ml-4">
                 <Avatar alt="Avatar" src={props.videoData.location} />
                 <div className="pl-4 text-sm">
-                    <p className="video-title text-base font-bold text-slate-50 break-words max-w-[20vw]">{props.videoData.description}</p>
-                    <p className="channel mt-2 text-sm text-slate-300">{props.videoData.author} <br /></p>
+                    <p className="video-title text-base font-bold text-slate-50 break-words max-w-[300px]">{props.videoData.description}</p>
+                    <p className="channel mt-2 text-sm text-slate-300">{shortenAddress(props.videoData.author)} <br /></p>
                 </div>
             </div>
             <Modal
