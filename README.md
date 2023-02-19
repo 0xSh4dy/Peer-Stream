@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# PeerStream
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PeerStream is a cutting-edge web3-based video streaming platform that aims to create a more open and inclusive ecosystem for video content. By leveraging the power of web3 technology, PeerStream empowers creators and viewers alike to experience a more transparent and secure live streaming experience.
 
-## Available Scripts
+## Problem it Solves
 
-In the project directory, you can run:
+Traditional video streaming platforms like YouTube and Twitch have a few limitations that PeerStream addresses:
 
-### `npm start`
+* **Single point of failure** : PeerStream ensures that there is no single point of failure, which means that the system won't fail completely if one part of it fails.
+* **Privacy** : Web3 technology allows users to interact with the platform without revealing their personal information, as the user's wallet address serves as their identity.
+* **Transparency** : Videos uploaded to PeerStream are permanently stored on the LivePeer network, making them virtually impossible to take down. This promotes the concept of free content open to all.
+* **Interoperability** : PeerStream can be integrated with other web3-based services, such as NFTs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Challenges we ran into
 
-### `npm test`
+During development, the PeerStream team faced several challenges, including:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **Indexing data on the blockchain on the Graph** : Indexing the contract's storage on the Goerli Testnet using the `@graphprotocol/graph-cli` took a long time as the start block was difficult to identify.
+* **Slow Goerli Testnet** : While a local blockchain would have facilitated faster development, PeerStream opted to use the Goerli Testnet for more production-friendly code, which slowed down development to a certain extent.
+* **Integration with LivePeer** : The `createAsset` function provided by `useAsset` in `@livepeer/react` did not return the data of the uploaded video, which required the team to spend a significant amount of time finding the appropriate API. Furthermore, subgraph could not be indexed over the LivePeer assets, so the team had to store the uploaded video data on a custom blockchain network (in this case, the Goerli Testnet) and index it using their subgraph.
