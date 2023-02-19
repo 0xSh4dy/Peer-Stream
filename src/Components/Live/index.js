@@ -24,11 +24,18 @@ export default function LiveStream( {address} ) {
   
   const [socket, setSocket] = useState({ nsp: "null" });
   const [messages,setMessages] = useState([])
-  
+  const [account,setAccount] = useState("");
+
+
+  useEffect(()=>{
+    window.ethereum?.request({ method: 'eth_requestAccounts' }).then((accounts)=>{
+      setAccount(accounts[0]);
+    });
+  },[])
   const handleSend = (msg) => {
       console.log(msg)
-      socket.emit('message', {link:link, name:'0x62783f623f865f263f6823f86f23f23432f', message:msg});
-      setMessages(messages => [...messages, {name:'0x627..432f',message:msg,person:"https://stonegatesl.com/wp-content/uploads/2021/01/avatar-300x300.jpg"}])
+      socket.emit('message', {link:link, name:account, message:msg});
+      setMessages(messages => [...messages, {name:(account.substring(0,4)+"..."+account.substring(account.length-4,account.length)),message:msg,person:"https://stonegatesl.com/wp-content/uploads/2021/01/avatar-300x300.jpg"}])
       console.log(messages)
       let chatBox = document.getElementById('chatBox'); 
       let xH = chatBox.scrollHeight+72;
