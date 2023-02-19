@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Header from "../Header/index";
 import Sidebar from "../SideBar/index";
+import { useNavigate } from "react-router-dom";
+import { AccountContext } from "../../App";
 
 const darkTheme = createTheme({
   palette: {
@@ -12,6 +14,21 @@ const darkTheme = createTheme({
 
 export default function Layout({ children }) {
   const [enableSidebar, setEnableSidebar] = useState(false);
+  const { account, setAccount } = useContext(AccountContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (account === null) {
+      window.ethereum?.request({ method: 'eth_requestAccounts' })
+        .then(res => {
+          setAccount(res[0]);
+        }).catch(err => {
+          console.log(err);
+          navigate("/");
+        })
+    }
+  }, [account, setAccount, navigate]);
+
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
