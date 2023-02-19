@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useMemo, useState, useCallback } from "react";
 import Layout from "../Layout";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CopyToClipboardButton from "../CopyToClipboardButton";
 
 export const NewStream = () => {
   const [streamName, setStreamName] = useState("");
@@ -90,7 +91,7 @@ export const NewStream = () => {
               autoPlay
               muted
             />
-            <div className="flex flex-row pt-8 w-full justify-between px-40">
+            <div className="flex flex-row pt-4 w-full justify-between px-40">
               <div className="flex ">
                 <Avatar
                   alt="Avatar"
@@ -106,19 +107,13 @@ export const NewStream = () => {
                   </p>
                 </div>
               </div>
-              <button className="bg-red-500 text-white font-bold py-2 px-4 border border-red-700 w-88 rounded h-10 w-28 text-left">
-                <div className="flex justify-between">
-                  <p>
-                  {"https://lvpr.tv/?v="+out.data.playbackId}
-                  </p>
-                  <IconButton onClick={()=>{
-                    console.log("Kek");
-                  }}
-                  >
-                    <ContentCopyIcon />
-                  </IconButton>
-                </div>
-              </button>
+              <Button
+                className="h-10 w-30 pl-4 rounded-md right-0"
+                variant="contained"
+                sx={{backgroundColor:"#64748B"}}
+              >
+                Copy Stream Link <CopyToClipboardButton link={"https://lvpr.tv/?v="+out.data.playbackId}/>{" "}
+              </Button>
             </div>
           </React.Fragment>
         )}
