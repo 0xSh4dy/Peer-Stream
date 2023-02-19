@@ -8,7 +8,6 @@ import { createContext, useState } from "react";
 // import LiveStream from "./Components/Livestream";
 import LivePeerTest from "./Components/ApiTest/LivePeerTest";
 import SideBar from "./Components/SideBar/";
-import LiveStream from "./Components/Live";
 
 export const AccountContext = createContext();
 
@@ -24,6 +23,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/live" element={<LiveStream />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/trending" element={<Dashboard />} />
+          <Route path="/settings" element={<Home />} />
           <Route path="/live" element={<LiveStream />} />
           <Route path="/lpt" element={<LivePeerTest/>} />
         </Routes>

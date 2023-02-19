@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import { Dashboard as DashboardIcon } from '@mui/icons-material';
 import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
@@ -27,6 +28,14 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                                     <HomeIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Home" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding >
+                            <ListItemButton onClick={() => { window.location.href = '/dashboard' }} selected={location.pathname === '/dashboard'}>
+                                <ListItemIcon>
+                                    <DashboardIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Dashboard" />
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
