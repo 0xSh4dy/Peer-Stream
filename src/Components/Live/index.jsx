@@ -183,7 +183,7 @@ export default function LiveStream( {address} ) {
   ];
 
   useEffect(() => {
-    const newSocket = io("http://localhost:3939/public");
+    const newSocket = io("54.215.206.6:3939/public");
     setSocket(newSocket);
     newSocket.emit("connection",link);
     return () => newSocket.close();
