@@ -37,6 +37,8 @@ const Dashboard = () => {
             },
             body:JSON.stringify(searchQuery)
         }).then(resp=>resp.json()).then((data)=>{
+            data.data.videoUploadeds = data.data.videoUploadeds.filter(d=>d.title!="cafebabe");
+            console.log(data.data.videoUploadeds)
             setVideoData(data.data.videoUploadeds);
         })
     },[startVideoSearch])
