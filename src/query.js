@@ -1,0 +1,1 @@
+export const searchAllQuery = {"query":"{\n  videoUploadeds {\n    id\n    hash\n    title\n    description\n    location\n    category\n    thumbnailHash\n    date\n    author\n    blockNumber\n    blockTimestamp\n    transactionHash\n  }\n}","variables":null,"extensions":{"headers":null},"skip":1};

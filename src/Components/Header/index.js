@@ -2,8 +2,12 @@ import { Avatar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import peerStream from "../../assets/peerStream.svg";
+import { useState, useContext } from "react";
+import { AccountContext } from "../../App";
 
 const Header = ({ enableSidebar, setEnableSidebar }) => {
+  const {searchKeywords, setSearchKeywords} = useContext(AccountContext);
+  const {startVideoSearch,setStartVideoSearch} = useContext(AccountContext);
   return (
     <div className="z-10 fixed w-screen top-0 bg-[#121212] py-1 px-8  flex items-center justify-between border-b border-b-[1px] ">
 
@@ -32,6 +36,17 @@ const Header = ({ enableSidebar, setEnableSidebar }) => {
       <div className="">
         <div className="border rounded overflow-hidden flex ">
           <input
+            onChange={(e)=>{
+              setSearchKeywords(e.target.value);
+              if(String(e.target.value).length==0){
+                setStartVideoSearch(!startVideoSearch);
+              }
+            }}
+            onKeyDown={(e)=>{
+              if(e.code==="Enter"){
+                setStartVideoSearch(!startVideoSearch);
+              }
+            }}
             type="text"
             className="px-4 py-1 bg-opacity-0 text-white bg-black w-[40vw]"
             placeholder="Search"

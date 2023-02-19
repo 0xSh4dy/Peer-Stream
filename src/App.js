@@ -15,9 +15,10 @@ export const AccountContext = createContext();
 
 function App() {
   const [account, setAccount] = useState(null);
-
+  const [searchKeywords,setSearchKeywords] = useState("");
+  const [startVideoSearch,setStartVideoSearch] = useState(false);
   return (
-    <AccountContext.Provider value={{ account, setAccount }}>
+    <AccountContext.Provider value={{ account, setAccount, searchKeywords, setSearchKeywords,startVideoSearch,setStartVideoSearch }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
