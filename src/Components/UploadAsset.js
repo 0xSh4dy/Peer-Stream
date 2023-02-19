@@ -37,7 +37,7 @@ export default function CreateAndViewAsset() {
       <button
         disabled={status === "loading" || !createAsset}
         onClick={() => {
-          createAsset?.();
+          createAsset?.().then((d=>console.log(d)));
         }}
       >
         Create Asset
