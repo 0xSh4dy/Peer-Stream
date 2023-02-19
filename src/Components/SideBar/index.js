@@ -7,12 +7,13 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import { Dashboard as DashboardIcon } from '@mui/icons-material';
 import ListItemText from '@mui/material/ListItemText';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import HistoryIcon from '@mui/icons-material/History';
 import LocalFireDepartmentSharpIcon from '@mui/icons-material/LocalFireDepartmentSharp';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
 
 export default function SideBar({ enableSidebar, setEnableSidebar }) {
     let location = useLocation();
@@ -30,6 +31,14 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
+                            <ListItemButton onClick={() => { window.location.href = '/dashboard' }} selected={location.pathname === '/dashboard'}>
+                                <ListItemIcon>
+                                    <DashboardIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Dashboard" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding >
                             <ListItemButton onClick={() => { window.location.href = '/trending' }} selected={location.pathname === '/trending'}>
                                 <ListItemIcon>
                                     <LocalFireDepartmentSharpIcon />
@@ -39,11 +48,11 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                         </ListItem>
                         <Divider />
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { window.location.href = '/library' }} selected={location.pathname === '/library'}>
+                            <ListItemButton onClick={() => { window.location.href = '/lpt' }} selected={location.pathname === '/library'}>
                                 <ListItemIcon>
-                                    <VideoLibraryIcon />
+                                    <LiveTvIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Library" />
+                                <ListItemText primary="Start Stream" />
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >

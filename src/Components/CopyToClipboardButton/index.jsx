@@ -2,12 +2,17 @@ import { useState } from "react";
 import { IconButton, Snackbar } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-const CopyToClipboardButton = () => {
+const CopyToClipboardButton = ({link}) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
-    navigator.clipboard.writeText(window.location.toString());
+    if(!link) {
+      navigator.clipboard.writeText(window.location.toString());
+    }
+    else{
+      navigator.clipboard.writeText(link);
+    }
   };
 
   return (

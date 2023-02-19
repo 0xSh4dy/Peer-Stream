@@ -4,7 +4,6 @@ import {
   studioProvider,
 } from "@livepeer/react";
 
-import CreateAndViewAsset from "./UploadAsset";
 import { NewStream } from "./Stream";
 
 const reactClient = createReactClient({
@@ -17,8 +16,7 @@ export default function LivePeerTest() {
   return (
     <div>
       <LivepeerConfig client={reactClient}>
-        <CreateAndViewAsset/>
-        {/* <NewStream/> */}
+        <NewStream/>
       </LivepeerConfig>
     </div>
   );
