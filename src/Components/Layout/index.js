@@ -6,6 +6,7 @@ import Sidebar from "../SideBar/index";
 import { CssBaseline } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { AccountContext } from "../../App";
+import { CssBaseline } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
