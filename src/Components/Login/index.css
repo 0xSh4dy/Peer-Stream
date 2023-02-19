@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+#intro {
+    overflow:  hidden ;
+    position: relative;
+    text-align: center;
+    justify-content:center;
+    width: 100%;
+    background-image: url("https://user-images.githubusercontent.com/85382679/219950571-99783ffc-9b0b-4357-a6a0-4614ebbc142d.png");
+    background-position: contain;
+    background-repeat: no-repeat;
+}
+
+#intro h1{
+    padding-top: 15vw;
+    color: rgb(236, 236, 236);
+    font-size: 5vw;
+    font-family: 'Russo One', sans-serif;
+}
+
+#intro h2{
+    color: rgb(236, 236, 236);
+    font-size: 2vw;
+}
+
+
+#header{
+    /* text-align: center !important; */
+    color: white !important;
+    font-size: x-large !important;
+}
+
+#header-heading{
+    color: white !important;
+    font-family: 'Russo One', sans-serif;
+    font-size: xx-large !important;
+}
+
+#tagline{
+    color: white !important;
+    font-family: 'Russo One', sans-serif;
+    font-size: x-large !important;
+}
+
