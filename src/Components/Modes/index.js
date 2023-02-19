@@ -15,13 +15,14 @@ import {
   createReactClient,
   studioProvider,
 } from "@livepeer/react";
+import { useNavigate } from "react-router";
 
 const text =
   "Upload a recorded video or go live streaming with just a tap.";
 
 export default function Modes() {
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   function ModeComponent() {
     return (
       <div className="modeBox w-screen h-screen flex flex-col justify-center items-center gap-y-5">
@@ -53,6 +54,7 @@ export default function Modes() {
         </div>
         <div>
           <Button
+            onClick={()=>{navigate("/lpt")}}
             sx={{
               backgroundColor: "#EB4335", borderRadius: 1, ':hover': {
                 bgcolor: 'pink',

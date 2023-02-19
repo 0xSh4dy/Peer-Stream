@@ -91,7 +91,7 @@ export const NewStream = () => {
 
         {stream?.playbackId && (
           <React.Fragment>
-            {window.alert("Please copy the stream key to your OBS Studio")}
+            {window.alert("Please copy the stream key to your OBS Studio. Stream server is rtmp://rtmp.livepeer.com/live")}
             <Player
               title={stream?.name}
               playbackId={stream?.playbackId}

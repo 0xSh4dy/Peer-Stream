@@ -27,12 +27,13 @@ function ModifiedSnackbar({ snackBarOpen, handleClose, severity, message }) {
   );
 }
 
-function FileUploadForm() {
+function FileUploadForm(props) {
   const inputFile = useRef();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [video, setVideo] = useState(null);
   const [percentUpload, setPercentUpload] = useState(0);
+  const [createAssetAllowed,setCreateAssetAllowed] = useState(true);
   const [snackOpts, setSnackOpts] = useState({
     open: false,
     severity: '',
@@ -110,7 +111,9 @@ function FileUploadForm() {
       <Button
         variant='contained'
         sx={{ ml: 4, mt: 3 }}
+        disabled={!createAssetAllowed}
         onClick={async () => {
+          setCreateAssetAllowed(false);
           let response = await fetch(
             REQUEST_LIVEPEER_UPLOAD_URL,
             {
@@ -206,6 +209,9 @@ function FileUploadForm() {
                         ...prevOpts,
                         ...newOpts,
                       }));
+                      setCreateAssetAllowed(true);
+                      window.alert(`Video ${video.name} uploaded successfully`)
+                      props.setOpen(!props.open)
                     })
                     .on('error', function (error, receipt) {
                       const newOpts = {
@@ -217,6 +223,8 @@ function FileUploadForm() {
                         ...prevOpts,
                         ...newOpts,
                       }));
+
+                      
                     });
                 });
             },

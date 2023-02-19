@@ -58,7 +58,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { navigate("/history") }} selected={location.pathname === '/history'}>
+                            <ListItemButton onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/history'}>
                                 <ListItemIcon>
                                     <HistoryIcon />
                                 </ListItemIcon>
