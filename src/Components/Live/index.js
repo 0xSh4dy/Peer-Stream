@@ -62,13 +62,22 @@ useEffect(() => {
         event.target.style.height = "5px";
         event.target.style.height = event.target.scrollHeight + "px";
 
+      }
+    }
+  };
+  document.addEventListener("keydown", listener);    
+  return () => {
+    document.removeEventListener("keydown", listener);
+  };
+}, [handleSend]);
 
-  useEffect(() => {
-    const newSocket = io("54.215.206.6:3939/public");
-    setSocket(newSocket);
-    newSocket.emit("connection",link);
-    return () => newSocket.close();
-  }, [setSocket]);
+
+useEffect(() => {
+  const newSocket = io("54.215.206.6:3939/public");
+  setSocket(newSocket);
+  newSocket.emit("connection",link);
+  return () => newSocket.close();
+}, [setSocket]);
 
 
 return (
