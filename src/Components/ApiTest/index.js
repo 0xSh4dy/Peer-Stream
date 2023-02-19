@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const apiUrl = "https://livepeer.studio/api/asset";
 
-const contractAddress = "0xb8a54a3793d0093b479a8e7ceff1043af06f27c0";
+const contractAddress = "0x5FD4aaf0106FC6dE615E6D1ABF60E58Ee7aC0E5e";
 
 export default function ApiTest() {
   const { address, setAddress } = useContext(AddressContext);
@@ -37,7 +37,7 @@ export default function ApiTest() {
       "Authorization",
       `Bearer ${process.env.REACT_APP_LIVEPEER_API_KEY}`
     );
-    const contract = await new web3.eth.Contract(ProxyVideoABI, address);
+    const contract = await new web3.eth.Contract(ProxyVideoABI, contractAddress);
 
     fetch(apiUrl, {
       mode: "cors",
@@ -47,6 +47,7 @@ export default function ApiTest() {
       .then((resp) => resp.json())
       .then((data) => {
         data.forEach((dat) => {
+          console.log(dat);
           let videoId = dat.id;
           let name = dat.name;
           let description =
@@ -65,6 +66,7 @@ export default function ApiTest() {
             playbackId
           ).send({ from: address })
           .on('receipt', function () {
+            console.log("received")
           });
         });
       });

@@ -101,7 +101,7 @@ export default function Modes() {
           <Dialog open={open} onClose={closeDialog}>
             <DialogTitle>Peer Stream</DialogTitle>
             <DialogContent>
-              <FileUploadForm approved={approved} setApproved={setApproved} closeDialog={closeDialog} />
+              <FileUploadForm approved={approved} setApproved={setApproved} closeDialog={closeDialog} open={open} setOpen={setOpen} />
             </DialogContent>
             <DialogActions>
               <FormDialogButtons />
