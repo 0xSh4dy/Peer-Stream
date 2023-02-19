@@ -1,8 +1,8 @@
-import Header from "../Header";
+import Layout from "../Layout";
 import Modes from "../Modes";
 
-export default function Home(){
-    return <div>
-        <Modes/>
-    </div>
+export default function Home() {
+    return <Layout>
+        <Modes />
+    </Layout>
 }

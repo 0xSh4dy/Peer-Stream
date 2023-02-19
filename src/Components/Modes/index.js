@@ -1,7 +1,6 @@
-import { useState, useRef } from "react";
-import { TextField, Modal, Button } from "@mui/material";
+import { useState } from "react";
+import { Button } from "@mui/material";
 import {
-  DriveFolderUpload,
   OndemandVideo,
   CloudUpload,
 } from "@mui/icons-material";
@@ -9,24 +8,19 @@ import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import FileUploadForm from "../FileUploadForm";
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from "@livepeer/react";
 
 const text =
-  "Choose your preferred mode of expression and get started. Upload a recorded video or go live streaming with just a tap.";
+  "Upload a recorded video or go live streaming with just a tap.";
 
 export default function Modes() {
-  const [modalOpen, setModalOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const inputFile = useRef(null);
-  function InnerModalBox() {
-    return (
-      <div className="flex flex-col w-screen h-screen justify-center items-center gap-y-5">
-        <TextField label="Title" variant="standard"></TextField>
-        <TextField label="Description" variant="standard"></TextField>
-      </div>
-    );
-  }
 
   function ModeComponent() {
     return (
@@ -35,7 +29,7 @@ export default function Modes() {
           className="modeBoxText w-1/4 text-center text-[white]"
           style={{
             fontFamily: "Roboto",
-            fontSize: "20px",
+            fontSize: "18px",
             fontWeight: 400,
             lineHeight: "23.44px",
           }}
@@ -52,16 +46,18 @@ export default function Modes() {
             }}
           >
             Upload Video
-
           </Button>
         </div>
         <div>
-          <img src="vectors/image.png" alt="Image not found" />
+          <img src="vectors/image.png" alt="" />
         </div>
         <div>
           <Button
-            style={{ backgroundColor: "#EB4335" }}
-            sx={{ borderRadius: 1 }}
+            sx={{
+              backgroundColor: "#EB4335", borderRadius: 1, ':hover': {
+                bgcolor: 'pink',
+              }
+            }}
             variant="contained"
             startIcon={<OndemandVideo />}
           >
@@ -80,50 +76,33 @@ export default function Modes() {
     setOpen(false);
   };
 
+  const reactClient = createReactClient({
+    provider: studioProvider({
+      apiKey: process.env.REACT_APP_LIVEPEER_API_KEY,
+    }),
+  });
+
+  function FormDialogButtons() {
+    return (
+      <React.Fragment>
+        <Button onClick={closeDialog}>Cancel</Button>
+      </React.Fragment>
+    );
+  }
   function FormDialog() {
     return (
       <div>
-        <Dialog open={open} onClose={closeDialog}>
-          <DialogTitle>Peer Stream</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              type="text"
-              label="Title"
-              fullWidth
-              variant="standard"
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              type="text"
-              label="Description"
-              fullWidth
-              variant="standard"
-              sx={{mt:3}}
-            />
-            <Button
-              sx={{ borderRadius: 1, mt:3 }}
-              variant="contained"
-              startIcon={<DriveFolderUpload />}
-              onClick={()=>{inputFile.current.click()}}
-            >
-              Browse File
-              <input
-                type="file"
-                id="file"
-                ref={inputFile}
-                style={{ display: "none" }}
-                onChange={(e) => {}}
-              />
-            </Button>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={closeDialog}>Cancel</Button>
-            <Button onClick={closeDialog}>Done</Button>
-          </DialogActions>
-        </Dialog>
+        <LivepeerConfig client={reactClient}>
+          <Dialog open={open} onClose={closeDialog}>
+            <DialogTitle>Peer Stream</DialogTitle>
+            <DialogContent>
+              <FileUploadForm closeDialog={closeDialog} open={open} setOpen={setOpen} />
+            </DialogContent>
+            <DialogActions>
+              <FormDialogButtons />
+            </DialogActions>
+          </Dialog>
+        </LivepeerConfig>
       </div>
     );
   }

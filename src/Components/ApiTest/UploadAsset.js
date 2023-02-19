@@ -24,6 +24,7 @@ export default function CreateAndViewAsset() {
         }
       : null
   );
+  
   return (
     <div className="App">
       <h2>Hello, {provider.getConfig().name}</h2>
@@ -36,7 +37,7 @@ export default function CreateAndViewAsset() {
       <button
         disabled={status === "loading" || !createAsset}
         onClick={() => {
-          createAsset?.();
+          createAsset?.().then((d=>console.log(d)));
         }}
       >
         Create Asset

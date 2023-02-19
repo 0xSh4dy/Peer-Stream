@@ -16,7 +16,6 @@ import LocalFireDepartmentSharpIcon from '@mui/icons-material/LocalFireDepartmen
 
 export default function SideBar({ enableSidebar, setEnableSidebar }) {
     let location = useLocation();
-    console.log(enableSidebar)
     return (
         <div>
             <Drawer anchor='left' open={enableSidebar} onClose={() => { setEnableSidebar(false) }} >
