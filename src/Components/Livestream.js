@@ -1,4 +1,4 @@
-import Layout from "./Layout/Index";
+import Layout from "./Layout/index";
 import {
   Divider,
   Avatar,
@@ -7,7 +7,7 @@ import {
   ListItemAvatar,
   ListItem,
   ListItemText,
-  Button
+  Button,
 } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -59,6 +59,72 @@ export default function LiveStream() {
             for my backyard and would love to fire up the grill.`,
       person: "/static/images/avatar/1.jpg",
     },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
+    {
+      name: "Summer BBQ",
+      message: `Who wants to have a cookout this weekend? I just got some furniture
+              for my backyard and would love to fire up the grill.`,
+      person: "/static/images/avatar/1.jpg",
+    },
   ];
   return (
     <Layout>
@@ -82,10 +148,8 @@ export default function LiveStream() {
                 </p>
               </div>
             </div>
-            <button
-                className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-red-700 w-30 rounded h-10 w-28"
-            >
-                Subscribe
+            <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-red-700 w-30 rounded h-10 w-28">
+              Subscribe
             </button>
           </div>
           <div className="flex">
@@ -93,7 +157,7 @@ export default function LiveStream() {
           </div>
         </div>
         <div className="flex flex-col mt-16">
-          <List>
+          <List sx={{overflow:"auto",borderBottom:1}}>
             {messageExamples.map(({ name, message, person }, index) => (
               <ListItem key={index + person}>
                 <ListItemAvatar>
@@ -103,18 +167,14 @@ export default function LiveStream() {
               </ListItem>
             ))}
           </List>
+          <div className="flex w-full">
+            <FormControl sx={{ padding: 4 , bottom:0, display:"flex"}} full >
+                <InputLabel htmlFor="my-input" >Live Chat</InputLabel>
+                <Input id="my-input" aria-describedby="my-helper-text" />
+            </FormControl>
+          </div>
         </div>
       </div>
-
-      {/* <Box className="flex flex-col top-0 mt-16 right-0 fixed h-screen bg-black"> */}
-
-      {/* <div className="flex flex-col  top-0 mt-16 right-0 fixed h-screen w-fit bg-black">
-
-            <FormControl sx={{width:400, padding:4}}>
-            <InputLabel htmlFor="my-input">Live Chat</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" />
-            </FormControl>            
-            </div> */}
     </Layout>
   );
 }
