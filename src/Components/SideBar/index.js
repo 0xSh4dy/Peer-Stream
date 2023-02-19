@@ -25,7 +25,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                 <Box className="" sx={{ width: 250 }} >
                     <List >
                         <ListItem disablePadding  >
-                            <ListItemButton onClick={() => { navigate("/home") }} selected={location.pathname === '/#/home'}>
+                            <ListItemButton onClick={() => { navigate("/home") }} selected={location.pathname === '/home'}>
                                 <ListItemIcon>
                                     <HomeIcon />
                                 </ListItemIcon>
@@ -33,7 +33,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton  onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/#/dashboard'}>
+                            <ListItemButton  onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/dashboard'}>
                                 <ListItemIcon>
                                     <DashboardIcon/>
                                 </ListItemIcon>
@@ -41,7 +41,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/#/trending'}>
+                            <ListItemButton onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/trending'}>
                                 <ListItemIcon>
                                     <LocalFireDepartmentSharpIcon />
                                 </ListItemIcon>
@@ -50,7 +50,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                         </ListItem>
                         <Divider />
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => {navigate("/lpt") }} selected={location.pathname === '/#/lpt'}>
+                            <ListItemButton onClick={() => {navigate("/lpt") }} selected={location.pathname === '/lpt'}>
                                 <ListItemIcon>
                                     <LiveTvIcon />
                                 </ListItemIcon>
@@ -58,7 +58,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { navigate("/history") }} selected={location.pathname === '/#/history'}>
+                            <ListItemButton onClick={() => { navigate("/history") }} selected={location.pathname === '/history'}>
                                 <ListItemIcon>
                                     <HistoryIcon />
                                 </ListItemIcon>
@@ -67,7 +67,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                         </ListItem>
                         <Divider />
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { navigate("/settings") }} selected={location.pathname === '/#/settings'}>
+                            <ListItemButton onClick={() => { navigate("/settings") }} selected={location.pathname === '/settings'}>
                                 <ListItemIcon>
                                     <SettingsIcon />
                                 </ListItemIcon>
