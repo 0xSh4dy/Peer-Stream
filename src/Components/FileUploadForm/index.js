@@ -210,7 +210,6 @@ function FileUploadForm(props) {
                         ...newOpts,
                       }));
                       setCreateAssetAllowed(true);
-                      window.alert(`Video ${video.name} uploaded successfully`)
                       props.setOpen(!props.open)
                     })
                     .on('error', function (error, receipt) {
