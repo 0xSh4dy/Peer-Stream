@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./Components/Home/";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Login from "./Components/Login/";
 import Dashboard from "./Components/Dashboard/";
 import LiveStream from "./Components/Live";
@@ -17,7 +17,7 @@ function App() {
   const [startVideoSearch,setStartVideoSearch] = useState(false);
   return (
     <AccountContext.Provider value={{ account, setAccount, searchKeywords, setSearchKeywords,startVideoSearch,setStartVideoSearch }}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
@@ -28,7 +28,7 @@ function App() {
           <Route path="/live" element={<LiveStream />} />
           <Route path="/lpt" element={<LivePeerTest/>} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AccountContext.Provider>
   );
 }
