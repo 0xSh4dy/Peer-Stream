@@ -8,14 +8,14 @@ import { Typography } from '@mui/material';
 import { Upload } from 'tus-js-client';
 import Web3 from 'web3';
 import { PROXY_VIDEO_ABI } from '../../constants';
-import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AddressContext } from '../../App';
+import { useContext } from 'react';
+import { AccountContext } from '../../App';
 
 import { useCreateAsset } from '@livepeer/react';
 import { Alert } from '../Login';
 import Snackbar from '@mui/material/Snackbar';
-import { DOWNLOAD_BASE_URL, LIVEPEER_API_URL } from '../../constants';
+import { DOWNLOAD_BASE_URL, LIVEPEER_API_URL, PEERTUBE_CONTRACT_ADDR, REQUEST_LIVEPEER_UPLOAD_URL } from '../../constants';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function ModifiedSnackbar({ snackBarOpen, handleClose, severity, message }) {
   return (
@@ -27,30 +27,18 @@ function ModifiedSnackbar({ snackBarOpen, handleClose, severity, message }) {
   );
 }
 
-function FileUploadForm(props) {
+function FileUploadForm() {
   const inputFile = useRef();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [video, setVideo] = useState(null);
+  const [percentUpload, setPercentUpload] = useState(0);
   const [snackOpts, setSnackOpts] = useState({
     open: false,
     severity: '',
     message: '',
   });
-  const { address, setAddress } = useContext(AddressContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    window.ethereum?.request({ method: 'eth_requestAccounts' }).then((res) => {
-      setAddress(res[0]);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (address === null) {
-      navigate('/home');
-    }
-  }, [address]);
+  const { account } = useContext(AccountContext);
 
   const {
     mutate: createAsset,
@@ -124,7 +112,7 @@ function FileUploadForm(props) {
         sx={{ ml: 4, mt: 3 }}
         onClick={async () => {
           let response = await fetch(
-            'https://livepeer.studio/api/asset/request-upload',
+            REQUEST_LIVEPEER_UPLOAD_URL,
             {
               method: 'POST',
               headers: {
@@ -141,6 +129,8 @@ function FileUploadForm(props) {
           // ------------------------------
           const tusEndpoint = data.tusEndpoint;
           const url = data.url;
+          console.log(url);
+
           const upload = new Upload(video, {
             endpoint: tusEndpoint,
             metadata: {
@@ -156,6 +146,7 @@ function FileUploadForm(props) {
                 2
               );
               console.log('Uploaded ' + percentage + '%');
+              setPercentUpload(percentage);
             },
             async onSuccess() {
               const downloadUrl = `${DOWNLOAD_BASE_URL}/${data.asset.playbackId}/video`;
@@ -174,11 +165,9 @@ function FileUploadForm(props) {
                 .then((resp) => resp.json())
                 .then(async (assetData) => {
                   const web3 = new Web3(Web3.givenProvider);
-                  const contractAddress =
-                    '0x3D3c236EAcffB96769eb8507C041a63425d181Cd';
                   const contract = await new web3.eth.Contract(
                     PROXY_VIDEO_ABI,
-                    contractAddress
+                    PEERTUBE_CONTRACT_ADDR
                   );
 
                   let latestUpload = assetData.filter(
@@ -186,6 +175,7 @@ function FileUploadForm(props) {
                       assetItem.playbackId === data.asset.playbackId
                   );
                   let latestUploadObject = latestUpload[0];
+                  console.log(latestUploadObject);
                   let videoId = latestUploadObject.id;
                   let videoName = latestUploadObject.name;
                   let videoDescription = description;
@@ -205,7 +195,7 @@ function FileUploadForm(props) {
                       downloadUrl,
                       playbackId
                     )
-                    .send({ from: address })
+                    .send({ from: account })
                     .on('confirmation', function (confirmationNumber, receipt) {
                       const newOpts = {
                         open: true,
@@ -239,8 +229,8 @@ function FileUploadForm(props) {
       </Button>
       {video ? (
         <Typography sx={{ mt: 1 }} paragraph={true}>
-          {' '}
           {video.name}
+          {percentUpload !== 0 ? <CircularProgress variant="determinate" value={percentUpload} /> : <React.Fragment></React.Fragment>}
         </Typography>
       ) : (
         <React.Fragment></React.Fragment>

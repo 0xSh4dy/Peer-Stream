@@ -21,8 +21,6 @@ const text =
 
 export default function Modes() {
   const [open, setOpen] = useState(false);
-  const [approved, setApproved] = useState(false);
-
 
   function ModeComponent() {
     return (
@@ -88,9 +86,6 @@ export default function Modes() {
     return (
       <React.Fragment>
         <Button onClick={closeDialog}>Cancel</Button>
-        <Button onClick={() => {
-          setApproved(true)
-        }}>Done</Button>
       </React.Fragment>
     );
   }
@@ -101,7 +96,7 @@ export default function Modes() {
           <Dialog open={open} onClose={closeDialog}>
             <DialogTitle>Peer Stream</DialogTitle>
             <DialogContent>
-              <FileUploadForm approved={approved} setApproved={setApproved} closeDialog={closeDialog} open={open} setOpen={setOpen} />
+              <FileUploadForm closeDialog={closeDialog} open={open} setOpen={setOpen} />
             </DialogContent>
             <DialogActions>
               <FormDialogButtons />

@@ -201,3 +201,5 @@ export const PROXY_VIDEO_ABI = [
 ]
 export const DOWNLOAD_BASE_URL = 'https://lp-playback.com/hls';
 export const LIVEPEER_API_URL = 'https://livepeer.studio/api/asset';
+export const REQUEST_LIVEPEER_UPLOAD_URL = 'https://livepeer.studio/api/asset/request-upload';
+export const PEERTUBE_CONTRACT_ADDR = '0x3D3c236EAcffB96769eb8507C041a63425d181Cd';
