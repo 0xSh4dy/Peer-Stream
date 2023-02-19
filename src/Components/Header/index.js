@@ -36,9 +36,9 @@ const Header = ({ enableSidebar, setEnableSidebar }) => {
             className="px-4 py-1 bg-opacity-0 text-white bg-black w-[40vw]"
             placeholder="Search"
           />
-          <button class="flex items-center justify-center px-4 border-l ">
+          <button className="flex items-center justify-center px-4 border-l ">
             <svg
-              class="h-4 w-4 text-grey-dark"
+              className="h-4 w-4 text-grey-dark"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

@@ -6,8 +6,8 @@ import Layout from "../Layout";
 const Dashboard = () => {
     return (
         <Layout>
-            <div class="container px-32">
-                <div class="flex flex-wrap mt-12 space-y-20 space-x-5">
+            <div className="container px-32">
+                <div className="flex flex-wrap mt-12 space-y-20 space-x-5">
                     <div className="hidden"></div>
                     <VideoCard />
                     <VideoCard />
