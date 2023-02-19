@@ -16,6 +16,7 @@ export default function ApiTest() {
       headers.append("Content-Type", "application/json");
       headers.append("Accept", "application/json");
       headers.append("Authorization", `Bearer ${process.env.REACT_APP_LIVEPEER_API_KEY}`);
+      const contract = web3.eth.Contract()
       fetch(apiUrl, {
         mode: "cors",
         method: "GET",
@@ -31,7 +32,7 @@ export default function ApiTest() {
             let catgory = "Some category";
             let createdAt = String(dat.createdAt);
             let author = dat.userId;
-            console.log(dat);
+            
           });
         });
     });
