@@ -4,18 +4,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LivePeerTest from "./Components/LivePeerTest";
 import Login from "./Components/Login/";
 import Dashboard from "./Components/Dashboard/";
+import { createContext, useState } from "react";
 
+export const AddressContext = createContext();
 
 function App() {
+  const [address, setAddress] = useState(null);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/testing" element={<LivePeerTest />} />
-      </Routes>
-    </BrowserRouter>
+    <AddressContext.Provider value={{ address, setAddress }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/testing" element={<LivePeerTest />} />
+        </Routes>
+      </BrowserRouter>
+    </AddressContext.Provider>
   );
 }
 
