@@ -14,8 +14,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import HistoryIcon from '@mui/icons-material/History';
 import LocalFireDepartmentSharpIcon from '@mui/icons-material/LocalFireDepartmentSharp';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
+import { useNavigate } from 'react-router-dom';
 
 export default function SideBar({ enableSidebar, setEnableSidebar }) {
+    const navigate = useNavigate();
     let location = useLocation();
     return (
         <div>
@@ -23,7 +25,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                 <Box className="" sx={{ width: 250 }} >
                     <List >
                         <ListItem disablePadding  >
-                            <ListItemButton onClick={() => { window.location.href = '/home' }} selected={location.pathname === '/home'}>
+                            <ListItemButton onClick={() => { navigate("/home") }} selected={location.pathname === '/#/home'}>
                                 <ListItemIcon>
                                     <HomeIcon />
                                 </ListItemIcon>
@@ -31,7 +33,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { window.location.href = '/dashboard' }} selected={location.pathname === '/dashboard'}>
+                            <ListItemButton  onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/#/dashboard'}>
                                 <ListItemIcon>
                                     <DashboardIcon/>
                                 </ListItemIcon>
@@ -39,7 +41,7 @@ export default function SideBar({ enableSidebar, setEnableSidebar }) {
                             </ListItemButton>
                         </ListItem>
                         <ListItem disablePadding >
-                            <ListItemButton onClick={() => { window.location.href = '/trending' }} selected={location.pathname === '/trending'}>
+                            <ListItemButton onClick={() => { navigate("/dashboard") }} selected={location.pathname === '/#/trending'}>
                                 <ListItemIcon>
                                     <LocalFireDepartmentSharpIcon />
                                 </ListItemIcon>
