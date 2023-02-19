@@ -1,4 +1,4 @@
-export const ProxyVideoABI = [
+export const PROXY_VIDEO_ABI = [
 	{
 		"anonymous": false,
 		"inputs": [
@@ -199,3 +199,5 @@ export const ProxyVideoABI = [
 		"type": "receive"
 	}
 ]
+export const DOWNLOAD_BASE_URL = 'https://lp-playback.com/hls';
+export const LIVEPEER_API_URL = 'https://livepeer.studio/api/asset';

@@ -2,17 +2,17 @@ import React from 'react'
 import { ReactComponent as LoginLogo } from '../../assets/login.svg';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { useContext, useEffect } from 'react';
-import { AddressContext } from '../../App';
+import { useContext } from 'react';
+import { AccountContext } from '../../App';
 import { useNavigate } from "react-router-dom";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
+export const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 function Login() {
     const [snackBarOpen, setSnackBarOpen] = React.useState(false);
-    const { address, setAddress } = useContext(AddressContext);
+    const { account, setAccount } = useContext(AccountContext);
     const navigate = useNavigate();
 
     const handleClose = (event, reason) => {
@@ -29,14 +29,14 @@ function Login() {
         else {
             window.ethereum.request({ method: 'eth_requestAccounts' })
                 .then(res => {
-                    setAddress(res[0]);
+                    setAccount(res[0]);
                 })
         }
     }
 
     const handleNavigate = (event) => {
-        if (address !== null) {
-            navigate("/home");
+        if (account !== null) {
+            navigate("/dashboard");
         }
     }
 
@@ -44,7 +44,7 @@ function Login() {
         <div className="w-screen h-screen flex flex-col items-center justify-center gap-y-10">
             <div className="cursor-pointer" onClick={handleNavigate}><LoginLogo /></div>
 
-            {address === null ? <button
+            {account === null ? <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 w-60 rounded"
                 onClick={handleWallet}
             >
@@ -54,7 +54,7 @@ function Login() {
                     <div className="py-1"><svg className="fill-current h-6 w-6 text-blue-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
                     <div>
                         <p className="font-bold">Your wallet address is:</p>
-                        <p className="text-base">{address}</p>
+                        <p className="text-base">{account}</p>
                     </div>
                 </div>
             </div>}
